@@ -1,3 +1,9 @@
+import React from 'react';
+import classes from './AvailableMeals.module.css';
+
+import Card from '../UI/Card';
+import MealItem from './MealItem/MealItem';
+
 const DUMMY_MEALS = [
   {
     id: 'm1',
@@ -24,3 +30,17 @@ const DUMMY_MEALS = [
     price: 18.99,
   },
 ];
+
+const AvailableMeals = () => {
+  return (
+    <section className={classes.meals}>
+      <Card>
+        <ul>
+          <MealItem meals={DUMMY_MEALS} />
+        </ul>
+      </Card>
+    </section>
+  );
+};
+
+export default AvailableMeals;
