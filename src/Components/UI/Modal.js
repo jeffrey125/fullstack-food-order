@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import classes from './Modal.module.css';
 
 const Backdrop = props => {
-  return <div className={classes.backdrop} />;
+  return <div className={classes.backdrop} onClick={props.onHideModal} />;
 };
 
 const ModalOverlay = props => {
@@ -12,11 +12,12 @@ const ModalOverlay = props => {
     </div>
   );
 };
+
 const Modal = props => {
   return (
     <>
       {ReactDOM.createPortal(
-        <Backdrop />,
+        <Backdrop onHideModal={props.onHideModal} />,
         document.getElementById('backdrop-root')
       )}
       {ReactDOM.createPortal(

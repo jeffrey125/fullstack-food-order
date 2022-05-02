@@ -9,7 +9,7 @@ const Header = props => {
     <>
       <header className={classes.header}>
         <h1>React Meals</h1>
-        <HeaderCardButton />
+        <HeaderCardButton onShowModal={props.onShowModal} />
       </header>
       ;
       <div className={classes['main-image']}>
