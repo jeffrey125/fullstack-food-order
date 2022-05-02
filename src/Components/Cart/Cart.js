@@ -8,8 +8,6 @@ import CartItem from './CartItem';
 const Cart = props => {
   const ctx = useContext(CartContext);
 
-  console.log(ctx);
-
   const hasItems = ctx.items.length > 0;
   const totalAmount = `${ctx.totalAmount.toFixed(2)}`;
 
