@@ -25,7 +25,7 @@ const HeaderCardButton = props => {
     }, 200);
 
     return () => clearTimeout(bumpAnimation);
-  }, [ctx.items, numberOfCartItems]);
+  }, [ctx.items]);
 
   return (
     <button onClick={props.onShowModal} className={btnClasses}>
