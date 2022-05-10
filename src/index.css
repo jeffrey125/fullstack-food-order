@@ -4,12 +4,18 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 0.4rem rgba(59, 102, 255, 0.4);
+}
+
 html {
   font-family: 'Noto Sans JP', sans-serif;
 }
 
 body {
   margin: 0;
+  padding: 0;
   background-color: #3f3f3f;
+  line-height: 1;
 }
-
