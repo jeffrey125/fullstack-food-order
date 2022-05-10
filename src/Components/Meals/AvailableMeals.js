@@ -1,42 +1,76 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import classes from './AvailableMeals.module.css';
 
 import Card from '../UI/Card';
 import MealItem from './MealItem/MealItem';
-
-const DUMMY_MEALS = [
-  {
-    id: 'm1',
-    name: 'Sushi',
-    description: 'Finest fish and veggies',
-    price: 22.99,
-  },
-  {
-    id: 'm2',
-    name: 'Schnitzel',
-    description: 'A german specialty!',
-    price: 16.5,
-  },
-  {
-    id: 'm3',
-    name: 'Barbecue Burger',
-    description: 'American, raw, meaty',
-    price: 12.99,
-  },
-  {
-    id: 'm4',
-    name: 'Green Bowl',
-    description: 'Healthy...and green...',
-    price: 18.99,
-  },
-];
+import Spinner from '../UI/Spinner';
 
 const AvailableMeals = () => {
+  const [mealData, setMealData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Fetch Meal Data on Firebase
+  // TODO Limit user from requesting the API from forms
+  const FIREBASE_API = `https://react-http-f5133-default-rtdb.asia-southeast1.firebasedatabase.app`;
+
+  // Ensures the function doesn't recreate
+  const fetchMealsData = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const response = await fetch(`${FIREBASE_API}/meals.json`);
+
+      // Error Handling
+      if (!response.ok) {
+        throw new Error(`Something went wrong Error code: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      let mealsData = [];
+
+      for (const mealID in data) {
+        mealsData.push({ id: mealID, ...data[mealID] });
+      }
+
+      setMealData(mealsData);
+      setIsLoading(false);
+    } catch (err) {
+      setError(err.message);
+    }
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    fetchMealsData();
+  }, [fetchMealsData]);
+
+  // Error Message UI
+  const errorMessage = <p className={classes.mealParagraph}>{error}</p>;
+
+  // Loader UI
+  const loader = (
+    <Spinner className={classes.mealParagraph}>Meals are Loading</Spinner>
+  );
+
+  // No Meal Data UI
+  const noMealData = <p className={classes.mealParagraph}>No Meal Data.</p>;
+
   return (
     <section className={classes.meals}>
       <Card>
         <ul>
-          <MealItem meals={DUMMY_MEALS} />
+          <div
+            className={
+              mealData.length === 0 || error ? classes.show : classes.hidden
+            }
+          >
+            {!isLoading && mealData.length === 0 && !error
+              ? noMealData
+              : errorMessage}
+          </div>
+          {isLoading ? loader : <MealItem meals={mealData} />}
         </ul>
       </Card>
     </section>
