@@ -6,9 +6,21 @@
   overflow: scroll;
 }
 
+.cart-summary {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 35rem;
+}
+
+.cart-summary h1 {
+  text-align: center;
+}
+
 .cart-items--error {
   text-align: center;
   padding: 3rem;
+  animation: fade-in 0.3s ease-in-out;
 }
 
 .total {
@@ -48,4 +60,19 @@
 .actions .button {
   background-color: #8a2b06;
   color: white;
+}
+
+/* Animation Class */
+.fade-in {
+  animation: fade-in 0.3s ease-in-out;
+}
+
+/* Fade In */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
