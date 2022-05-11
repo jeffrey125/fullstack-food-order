@@ -40,7 +40,7 @@ const AvailableMeals = () => {
       setError(err.message);
     }
     setIsLoading(false);
-  }, []);
+  }, [FIREBASE_API]);
 
   useEffect(() => {
     fetchMealsData();
