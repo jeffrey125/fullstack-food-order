@@ -22,3 +22,5 @@ A simple Fullstack Food-Order-App that fetches meal data on a backend server (Fi
 ### Features to be implemented in the future
 
 - User Auth and autocompletion of address for saving of Your Cart items and Analytics
+
+- Find Order Status
