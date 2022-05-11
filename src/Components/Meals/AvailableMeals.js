@@ -63,7 +63,9 @@ const AvailableMeals = () => {
         <ul>
           <div
             className={
-              mealData.length === 0 || error ? classes.show : classes.hidden
+              !isLoading && (mealData.length === 0 || error)
+                ? classes.show
+                : classes.hidden
             }
           >
             {!isLoading && mealData.length === 0 && !error
