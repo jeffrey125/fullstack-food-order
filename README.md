@@ -7,7 +7,7 @@ A simple Fullstack Food-Order-App that fetches meal data on a backend server (Fi
 ## Techs Used
 
 - Create-React-App
-- React-hook-form
+- Custom Made Form
 - Firebase
 
 ### Copyright ©

@@ -6,10 +6,14 @@ const Input = props => {
     return;
   }
 
+  const { input, label, inputBox } = props.className;
+
   return (
-    <div className={classes.input}>
-      <label htmlFor={props.type.id}>{props.label}</label>
-      <input {...props.type} />
+    <div className={input}>
+      <label htmlFor={props.type.id} className={label}>
+        {props.label}
+      </label>
+      <input className={inputBox} {...props.type} />
     </div>
   );
 };
