@@ -36,9 +36,9 @@ const MealItemForm = props => {
 
   // Classes to import on Input component
   const inputClass = {
-    input: classes.input,
+    inputBox: classes.input,
     label: classes['input-label'],
-    inputBox: classes['input-input--box'],
+    input: classes['input-input--box'],
   };
 
   return (

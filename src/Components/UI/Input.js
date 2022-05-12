@@ -1,4 +1,4 @@
-import classes from './Input.module.css';
+// Reusable Input Component
 
 const Input = props => {
   if (!props) {
@@ -6,14 +6,19 @@ const Input = props => {
     return;
   }
 
+  if (!props.className) {
+    console.error('No className Object');
+    return;
+  }
+
   const { input, label, inputBox } = props.className;
 
   return (
-    <div className={input}>
+    <div className={inputBox}>
       <label htmlFor={props.type.id} className={label}>
         {props.label}
       </label>
-      <input className={inputBox} {...props.type} />
+      <input className={input} {...props.type} />
     </div>
   );
 };
