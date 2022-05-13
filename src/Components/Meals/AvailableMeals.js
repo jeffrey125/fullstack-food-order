@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { FIREBASE_API } from '../../utils/constant';
 import classes from './AvailableMeals.module.css';
 
 import Card from '../UI/Card';
@@ -11,9 +12,6 @@ const AvailableMeals = () => {
   const [error, setError] = useState(null);
 
   // Fetch Meal Data on Firebase
-  // TODO Limit user from requesting the API from forms
-  const FIREBASE_API = `https://react-http-f5133-default-rtdb.asia-southeast1.firebasedatabase.app`;
-
   // Ensures the function doesn't recreate
   const fetchMealsData = useCallback(async () => {
     try {
