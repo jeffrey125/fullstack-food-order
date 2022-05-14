@@ -1,5 +1,4 @@
 import React from 'react';
-import Input from '../UI/Input';
 
 import classes from './OrderFormInput.module.css';
 
@@ -32,8 +31,11 @@ const OrderFormInput = props => {
   };
 
   return (
-    <div>
-      <Input type={inputDataType} className={inputClass} label={label}></Input>
+    <div className={classes.inputFlex}>
+      <label htmlFor={inputDataType.id} className={inputClass.label}>
+        {label}
+      </label>
+      <input className={inputClass.input} {...inputDataType} />
       {errorContent}
     </div>
   );
