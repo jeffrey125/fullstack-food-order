@@ -171,10 +171,6 @@ const OrderForm = props => {
 
   // Add a Back Functionality (will redirect you back to available meals)
 
-  // TODO Fix Modal Header if you didnt go back it will remain the same state
-
-  // TODO Try using Grid
-
   // Form Is Valid Checker
   if (
     firstNameValid &&
@@ -205,7 +201,7 @@ const OrderForm = props => {
       barangay: selectedBarangay,
       mobileNumber: mobileNumberValue,
       items: ctx.items,
-      totalAmount: ctx.totalAmount,
+      totalAmount: +ctx.totalAmount.toFixed(2),
     };
     props.onSendFoodOrderData(foodOrderData, foodOrderData.orderId);
 
@@ -270,7 +266,6 @@ const OrderForm = props => {
           onChangeAddress={provinceChangeHandler}
           onBlurAddress={provinceBlur}
           className={addressClass}
-          disabled={false}
           errMsg={errMsg}
           fetchHasError={fetchHasError}
           isLoading={isLoading}
