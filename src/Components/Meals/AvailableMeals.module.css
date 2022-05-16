@@ -11,6 +11,24 @@
   padding: 0;
 }
 
+.mealParagraph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 @keyframes meals-appear {
   from {
     opacity: 0;

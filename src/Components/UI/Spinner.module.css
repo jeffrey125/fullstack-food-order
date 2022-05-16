@@ -1,0 +1,23 @@
+/* Loader */
+.spinner {
+  margin-left: 0.5rem;
+  height: 2rem;
+  width: 2rem;
+  color: #5a5a5a;
+  position: relative;
+  display: relative;
+  bottom: -0.2rem;
+  border: 5px solid;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

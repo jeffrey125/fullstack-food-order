@@ -14,5 +14,15 @@
 
 .summary h2 {
   font-size: 2rem;
-  margin-top: 0;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.summary p {
+  font-size: 1.12rem;
+  line-height: 1.2;
+}
+
+.summary p:nth-child(2) {
+  margin-bottom: 0.75rem;
 }

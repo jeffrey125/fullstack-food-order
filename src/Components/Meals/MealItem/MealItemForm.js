@@ -6,7 +6,6 @@ import CartContext from '../../../store/cart-context';
 
 const MealItemForm = props => {
   const [foodAmount, setFoodAmount] = useState(1);
-
   const ctx = useContext(CartContext);
 
   const inputDataType = {
@@ -35,9 +34,16 @@ const MealItemForm = props => {
     setFoodAmount(1);
   };
 
+  // Classes to import on Input component
+  const inputClass = {
+    inputBox: classes.input,
+    label: classes['input-label'],
+    input: classes['input-input--box'],
+  };
+
   return (
     <form className={classes.form} onSubmit={submitHandler}>
-      <Input label="Amount" type={inputDataType}></Input>
+      <Input label="Amount" type={inputDataType} className={inputClass}></Input>
       <button type="submit">+ Add</button>
     </form>
   );
