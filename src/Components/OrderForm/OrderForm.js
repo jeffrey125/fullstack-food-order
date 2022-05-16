@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import classes from './OrderForm.module.css';
 
 import useInput from '../../hooks/use-input';
 import OrderFormInput from './OrderFormInput';
 import OrderFormAddress from './OrderFormAddress';
+import CartContext from '../../store/cart-context';
 import Card from '../UI/Card';
 
 const OrderForm = props => {
+  // Cart Context to access Order
+  const ctx = useContext(CartContext);
+
+  // Init for Clicking Back reset
+  let backReset = false;
+
   // Overall Form validity
   let foodOrderIsValid = false;
 
@@ -188,6 +196,7 @@ const OrderForm = props => {
 
     // Props to be sent in App.js for POST method
     const foodOrderData = {
+      orderId: `order-${uuidv4().slice(0, 4)}`,
       firstName: firstNameValue,
       lastName: lastNameValue,
       province: selectedProvince,
@@ -195,10 +204,10 @@ const OrderForm = props => {
       city: selectedCity,
       barangay: selectedBarangay,
       mobileNumber: mobileNumberValue,
-      foodOrder: [],
-      totalAmount: 0,
+      items: ctx.items,
+      totalAmount: ctx.totalAmount,
     };
-    console.log(foodOrderData);
+    props.onSendFoodOrderData(foodOrderData, foodOrderData.orderId);
 
     // Form Reset
     firstNameReset('', false);
@@ -208,7 +217,32 @@ const OrderForm = props => {
     cityReset('', false);
     barangayReset('', false);
     mobileNumberReset('', false);
+
+    // Hides Form on Submit
+    props.onHideForm();
+
+    // Clears Session Storage and reverts to default Cart State
+    ctx.reset();
+    sessionStorage.clear();
   };
+
+  // Hide Form
+  const hideFormHandlerReset = () => {
+    backReset = true;
+    props.onHideForm();
+  };
+
+  // Reset form when back is clicked
+  if (backReset) {
+    firstNameReset('', false);
+    lastNameReset('', false);
+    provinceReset('', false);
+    streetReset('', false);
+    cityReset('', false);
+    barangayReset('', false);
+    mobileNumberReset('', false);
+    backReset = false;
+  }
 
   return (
     <Card className={classes['card-form']}>
@@ -284,7 +318,11 @@ const OrderForm = props => {
         ></OrderFormInput>
 
         <div className={classes.actions}>
-          <button type="button" className={classes['button--alt']}>
+          <button
+            type="button"
+            className={classes['button--alt']}
+            onClick={hideFormHandlerReset}
+          >
             Back
           </button>
 
