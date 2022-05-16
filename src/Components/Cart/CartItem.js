@@ -6,7 +6,7 @@ const CartItem = props => {
   // Edit food or Summary
   const buttonOrSummary = props.buttonOrSummary ? (
     <div>
-      <h3>$ {`${+props.price * +props.amount}`}</h3>
+      <h3>₱ {`${+props.price * +props.amount}`}</h3>
     </div>
   ) : (
     <div className={classes.actions}>

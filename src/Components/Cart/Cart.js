@@ -97,29 +97,30 @@ const Cart = props => {
     </button>
   );
 
-  // Food Order Summary DONE
-  /// Show Order Summary DONE
-  /// Confirmation or Back DONE
+  // Show Food Order
+  const showFoodOrderFormHandler = () => {
+    setOrderSummary(false);
+    props.onShowForm();
+    props.onHideModal();
+  };
 
-  // Food Order Form
-  /// Order Input
-  /// Confirmation or Back
-
-  // Show Food Order Sucess UI
-
-  // Modal Conditional Statement
   return (
     <Modal onHideModal={props.onHideModal}>
       {cardContent}
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>$ {totalAmount}</span>
+        <span>₱ {totalAmount}</span>
       </div>
 
       <div className={classes.actions}>
         {closeOrBack}
         {hasItems && (
-          <button className={classes.button} onClick={orderSummaryHandler}>
+          <button
+            className={classes.button}
+            onClick={
+              orderSummary ? showFoodOrderFormHandler : orderSummaryHandler
+            }
+          >
             Next
           </button>
         )}
