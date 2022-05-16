@@ -17,8 +17,6 @@ A simple Fullstack Food-Order-App that fetches meal data on a backend server (Fi
 - All credits to him for teaching me to use Firebase and React
 - JSX code and Firebase is all mine
 
-- FOR REACT AND FIREBASE PORTFOLIO ONLY
-
 ### Features to be implemented in the future
 
 - User Auth and autocompletion of address for saving of Your Cart items and Analytics
