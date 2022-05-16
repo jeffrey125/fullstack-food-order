@@ -17,7 +17,10 @@ function App() {
   const [availableAddress, setAvailableAddress] = useState([]);
   const [addressLoading, setAddressLoading] = useState(false);
   const [fetchHasError, setFetchHasError] = useState(false);
-  const FIREBASE_API = `https://react-http-f5133-default-rtdb.asia-southeast1.firebasedatabase.app`;
+  const {
+    REACT_APP_FIREBASE_API_URL: FIREBASE_URL,
+    REACT_APP_FIREBASE_API_KEY: FIREBASE_KEY,
+  } = process.env;
 
   const showModalHandler = () => {
     setShowModal(true);
@@ -45,7 +48,9 @@ function App() {
       setFetchHasError(false);
       setErrorAddress(null);
       setAddressLoading(true);
-      const response = await fetch(`${FIREBASE_API}/address.json`);
+      const response = await fetch(
+        `${FIREBASE_URL}/address.json?key=${FIREBASE_KEY}`
+      );
 
       if (!response.ok) {
         setFetchHasError(true);
@@ -79,45 +84,50 @@ function App() {
       setErrorAddress(err.message);
     }
     setAddressLoading(false);
-  }, [FIREBASE_API]);
+  }, [FIREBASE_URL, FIREBASE_KEY]);
 
   useEffect(() => {
     availableAddressDelivery();
   }, [availableAddressDelivery]);
 
   // Sends Food Data in Backend Server
-  const sendFoodDataHandler = async (foodData, orderId) => {
-    try {
-      // Data is sending (Loader)
-      setOrderId('');
-      setOrderFormIsSending(true);
-      // Order Submitted!
-      setShowSuccessModal(true);
+  const sendFoodDataHandler = useCallback(
+    async (foodData, orderId) => {
+      try {
+        // Data is sending (Loader)
+        setOrderId('');
+        setOrderFormIsSending(true);
+        // Order Submitted!
+        setShowSuccessModal(true);
 
-      const response = await fetch(
-        `https://react-http-f5133-default-rtdb.asia-southeast1.firebasedatabase.app/orders/${orderId}.json`,
-        {
-          method: 'PUT',
-          body: JSON.stringify(foodData),
-          headers: {
-            'Content-type': 'application/json',
-          },
+        const response = await fetch(
+          `${FIREBASE_URL}/orders/${orderId}.json?key=${FIREBASE_KEY}`,
+          {
+            method: 'PUT',
+            body: JSON.stringify(foodData),
+            headers: {
+              'Content-type': 'application/json',
+            },
+          }
+        );
+
+        // Error Handling and Success UI
+        if (!response.ok) {
+          throw new Error(
+            `Something went wrong Error Code: ${response.status}`
+          );
         }
-      );
 
-      // Error Handling and Success UI
-      if (!response.ok) {
-        throw new Error(`Something went wrong Error Code: ${response.status}`);
+        // Order Id to be sent in modal
+        setOrderId(orderId);
+      } catch (err) {
+        setOrderFormError(err.message);
+        setShowSuccessModal(true);
       }
-
-      // Order Id to be sent in modal
-      setOrderId(orderId);
-    } catch (err) {
-      setOrderFormError(err.message);
-      setShowSuccessModal(true);
-    }
-    setOrderFormIsSending(false);
-  };
+      setOrderFormIsSending(false);
+    },
+    [FIREBASE_KEY, FIREBASE_URL]
+  );
 
   const mainContent = showForm ? (
     <OrderForm

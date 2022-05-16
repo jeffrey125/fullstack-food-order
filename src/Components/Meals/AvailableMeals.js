@@ -9,7 +9,10 @@ const AvailableMeals = () => {
   const [mealData, setMealData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const FIREBASE_API = `https://react-http-f5133-default-rtdb.asia-southeast1.firebasedatabase.app`;
+  const {
+    REACT_APP_FIREBASE_API_URL: FIREBASE_URL,
+    REACT_APP_FIREBASE_API_KEY: FIREBASE_KEY,
+  } = process.env;
 
   // Fetch Meal Data on Firebase
   // Ensures the function doesn't recreate
@@ -17,7 +20,9 @@ const AvailableMeals = () => {
     try {
       setIsLoading(true);
       setError(null);
-      const response = await fetch(`${FIREBASE_API}/meals.json`);
+      const response = await fetch(
+        `${FIREBASE_URL}/meals.json?key=${FIREBASE_KEY}`
+      );
 
       // Error Handling
       if (!response.ok) {
@@ -38,7 +43,7 @@ const AvailableMeals = () => {
       setError(err.message);
     }
     setIsLoading(false);
-  }, [FIREBASE_API]);
+  }, [FIREBASE_URL, FIREBASE_KEY]);
 
   useEffect(() => {
     fetchMealsData();
