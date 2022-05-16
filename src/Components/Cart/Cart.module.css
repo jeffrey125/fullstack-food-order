@@ -36,7 +36,6 @@
 .actions {
   text-align: right;
 }
-
 .actions button {
   font: inherit;
   cursor: pointer;
@@ -77,3 +76,15 @@
     opacity: 1;
   }
 }
+
+@media (max-height: 42em) {
+  .cartFlex {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .actions {
+    margin-top: auto;
+    margin-left: auto;
+  }
+} ;

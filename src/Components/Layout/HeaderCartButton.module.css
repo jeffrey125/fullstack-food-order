@@ -59,3 +59,38 @@
     transform: scale(1);
   }
 }
+
+@media (max-width: 36em) {
+  .button {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 34em) {
+  .button {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 31em) {
+  .button {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 29em) {
+  .cartTitle {
+    display: none;
+  }
+
+  .badge {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 23em) {
+  .button {
+    padding: 0.75rem 0.8rem;
+  }
+}

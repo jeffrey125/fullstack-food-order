@@ -24,3 +24,7 @@ A simple Fullstack Food-Order-App that fetches meal data on a backend server (Fi
 - Find Order Status
 
 - Media Queries for all screen width
+
+- Admin Panel for Order tracking and adding Meal Items
+
+- Add Hero Section

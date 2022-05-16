@@ -9,6 +9,7 @@ const OrderFormAddress = props => {
     inputFlex: formInputFlex,
     error,
     invalid,
+    option,
   } = props.className;
   const hasError = props.hasError;
   const addressData = props.address;
@@ -49,12 +50,14 @@ const OrderFormAddress = props => {
         onBlur={props.onBlurAddress}
         value={props.value}
       >
-        <option value="">{placeHolder}</option>
+        <option value="" className={option}>
+          {placeHolder}
+        </option>
         {addressData.map((add, i) => {
           const optionClean = add.replaceAll('-', ' ');
 
           return (
-            <option key={i} value={add}>
+            <option key={i} value={add} className={option}>
               {optionClean.toUpperCase()}
             </option>
           );
