@@ -105,7 +105,7 @@ const Cart = props => {
   };
 
   return (
-    <Modal onHideModal={props.onHideModal}>
+    <Modal onHideModal={props.onHideModal} className={classes.cartFlex}>
       {cardContent}
       <div className={classes.total}>
         <span>Total Amount</span>

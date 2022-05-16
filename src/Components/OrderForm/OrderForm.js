@@ -76,6 +76,7 @@ const OrderForm = props => {
     error: classes.error,
     invalid: classes.invalid,
     inputFlex: classes.inputFlex,
+    option: classes.option,
   };
 
   const {

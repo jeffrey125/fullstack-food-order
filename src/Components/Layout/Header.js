@@ -8,7 +8,7 @@ const Header = props => {
   return (
     <>
       <header className={classes.header}>
-        <h1>Food Order App</h1>
+        <h1 className={classes.headerTitle}>Food Order App</h1>
         <HeaderCardButton onShowModal={props.onShowModal} />
       </header>
       ;

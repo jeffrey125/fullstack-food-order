@@ -48,9 +48,3 @@ body {
 
 /* Media Query */
 /* Default HTML pixel size is 16px */
-
-@media (max-width: 160em) {
-  /* html {
-    font-size: 200%;
-  } */
-}
