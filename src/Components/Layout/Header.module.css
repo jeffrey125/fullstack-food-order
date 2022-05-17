@@ -28,7 +28,7 @@
   transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem);
 }
 
-@media (max-width: 40em) {
+@media (max-width: 41em) {
   .headerTitle {
     font-size: 1.6rem;
   }

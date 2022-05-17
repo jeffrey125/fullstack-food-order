@@ -104,8 +104,11 @@ const Cart = props => {
     props.onHideModal();
   };
 
+  // Conditional for cartFlex if Items are 1
+  const cartFlexClass = ctx.items.length <= 2 ? '' : classes.cartFlex;
+
   return (
-    <Modal onHideModal={props.onHideModal} cartFlex={classes.cartFlex}>
+    <Modal onHideModal={props.onHideModal} cartFlex={cartFlexClass}>
       {cardContent}
       <div className={classes.total}>
         <span>Total Amount</span>
