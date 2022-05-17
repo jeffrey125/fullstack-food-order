@@ -81,6 +81,15 @@
   .cartFlex {
     display: flex;
     flex-direction: column;
+    height: 25rem;
+  }
+
+  .cart-items {
+    width: 100%;
+  }
+
+  .total {
+    width: 100%;
   }
 
   .actions {

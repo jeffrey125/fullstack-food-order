@@ -7,13 +7,21 @@ const Backdrop = props => {
 
 const ModalOverlay = props => {
   return (
-    <div className={`${classes.modal} ${props.className}`}>
+    <div
+      className={`${classes.modal} ${props.className} ${props.modalMediaQuery}`}
+    >
       {props.children}
     </div>
   );
 };
 
 const Modal = props => {
+  const modalMediaQuery = props.showSuccessModal
+    ? classes.modalSuccessQuery
+    : `${props.cartFlex} ${props.modalQuery}`;
+
+  console.log(modalMediaQuery);
+
   return (
     <>
       {ReactDOM.createPortal(
@@ -21,7 +29,10 @@ const Modal = props => {
         document.getElementById('backdrop-root')
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay className={props.className}>
+        <ModalOverlay
+          className={props.className}
+          modalMediaQuery={modalMediaQuery}
+        >
           {props.children}
         </ModalOverlay>,
         document.getElementById('modal-root')

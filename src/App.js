@@ -159,6 +159,7 @@ function App() {
             orderFormSending={orderFormIsSending}
             orderFormError={orderFormError}
             orderId={orderId}
+            showModal={showSuccessModal}
           />
         )}
         {mainContent}
