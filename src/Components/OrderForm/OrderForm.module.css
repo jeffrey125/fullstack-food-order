@@ -1,7 +1,8 @@
 .card-form {
   position: relative;
   height: 45rem;
-  width: 40rem;
+  max-width: 40rem;
+  width: 90%;
   margin: auto;
   margin-top: -15rem;
   animation: fade-in 0.5s ease-in-out;
@@ -146,4 +147,39 @@
   flex-direction: column;
   justify-content: flex-start;
   height: 5rem;
+}
+
+@media (max-width: 34em) {
+  .select {
+    max-width: 15rem;
+    width: 25rem;
+  }
+
+  .select::placeholder {
+    font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 31em) {
+  .form-header {
+    font-size: 1.8rem;
+  }
+
+  .label {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 23em) {
+  .actions {
+    width: 100%;
+  }
+
+  .actions button {
+    margin-left: 0;
+  }
+
+  .button--alt {
+    margin-right: auto;
+  }
 }
