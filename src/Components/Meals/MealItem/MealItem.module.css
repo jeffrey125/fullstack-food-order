@@ -21,3 +21,30 @@
   color: #ad5502;
   font-size: 1.25rem;
 }
+
+@media (max-width: 38em) {
+}
+
+@media (max-width: 34em) {
+  .meal {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+
+  .meal h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 29em) {
+  .meal {
+    flex-direction: column;
+  }
+
+  .meal button {
+    width: 100%;
+  }
+}
