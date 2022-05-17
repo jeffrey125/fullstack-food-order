@@ -54,7 +54,12 @@ const AvailableMeals = () => {
 
   // Loader UI
   const loader = (
-    <Spinner className={classes.mealParagraph}>Meals are Loading</Spinner>
+    <Spinner
+      className={classes.mealParagraph}
+      spinnerClass={classes.mediaSpinner}
+    >
+      Meals are Loading
+    </Spinner>
   );
 
   // No Meal Data UI

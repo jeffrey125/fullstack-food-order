@@ -9,6 +9,7 @@ const OrderFormSuccess = props => {
   const orderFormSending = props.orderFormSending;
   const orderFormError = props.orderFormError;
   const orderId = props.orderId;
+  const showModal = props.showModal;
 
   if (orderFormSending) {
     title = 'Order is Sending';
@@ -30,7 +31,7 @@ const OrderFormSuccess = props => {
   }
 
   return (
-    <Modal onHideModal={hideModalhandler}>
+    <Modal onHideModal={hideModalhandler} showSuccessModal={showModal}>
       <div className={classes.successContainer}>
         <h1 className={classes.header}>{title}</h1>
         {content}

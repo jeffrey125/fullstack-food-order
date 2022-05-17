@@ -26,3 +26,49 @@
 .summary p:nth-child(2) {
   margin-bottom: 0.75rem;
 }
+
+@media (max-width: 38em) {
+  .summary h2 {
+    font-size: 1.8rem;
+  }
+
+  .summary p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 34em) {
+  .summary h2 {
+    font-size: 1.6rem;
+  }
+
+  .summary p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 34em) {
+  .summary h2 {
+    font-size: 1.5rem;
+  }
+
+  .summary p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 29em) {
+  .summary h2 {
+    font-size: 1.2rem;
+  }
+
+  .summary p {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 29em) {
+  .summary h2 {
+    font-size: 1rem;
+  }
+} ;

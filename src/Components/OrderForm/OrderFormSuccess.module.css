@@ -66,3 +66,10 @@
     opacity: 1;
   }
 }
+
+@media (max-height: 42em) {
+  .successContainer {
+    max-height: 15rem;
+    height: 100%;
+  }
+} ;

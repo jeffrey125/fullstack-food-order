@@ -40,7 +40,11 @@
 }
 
 @media (max-height: 42em) {
-  .modal {
+  .modalCartQuery {
     height: 25rem;
+  }
+
+  .modalSuccessQuery {
+    height: 15rem;
   }
 } ;
