@@ -5,7 +5,7 @@ const Spinner = props => {
   return (
     <p className={props.className}>
       {props.children}
-      <span className={classes.spinner} />
+      <span className={`${classes.spinner} ${props.spinnerClass}`} />
     </p>
   );
 };
