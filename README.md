@@ -30,4 +30,4 @@ A simple Fullstack Food-Order-App that fetches meal data on a backend server (Fi
 
 - Add Hero Section
 
-- Add a an exit animation when modal unmounts
+- Add an exit animation when modal unmounts
