@@ -202,6 +202,7 @@ const OrderForm = props => {
     // Props to be sent in App.js for POST method
     const foodOrderData = {
       orderId: `order-${uuidv4().slice(0, 4)}`,
+      orderCreated: Date.now(),
       firstName: firstNameValue,
       lastName: lastNameValue,
       province: selectedProvince,
