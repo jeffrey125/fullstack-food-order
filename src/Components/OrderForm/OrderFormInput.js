@@ -35,7 +35,11 @@ const OrderFormInput = props => {
       <label htmlFor={inputDataType.id} className={inputClass.label}>
         {label}
       </label>
-      <input className={inputClass.input} {...inputDataType} />
+      <input
+        className={inputClass.input}
+        ref={props.inputRef}
+        {...inputDataType}
+      />
       {errorContent}
     </div>
   );
