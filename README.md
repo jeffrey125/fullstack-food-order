@@ -29,3 +29,5 @@ A simple Fullstack Food-Order-App that fetches meal data on a backend server (Fi
 - Admin Panel for Order tracking and adding Meal Items
 
 - Add Hero Section
+
+- Add a an exit animation when modal unmounts
