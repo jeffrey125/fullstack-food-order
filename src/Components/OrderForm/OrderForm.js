@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import classes from './OrderForm.module.css';
 
@@ -9,6 +9,8 @@ import CartContext from '../../store/cart-context';
 import Card from '../UI/Card';
 
 const OrderForm = props => {
+  const [emptyItemError, setEmptyItemError] = useState(false);
+
   // Cart Context to access Order
   const ctx = useContext(CartContext);
 
@@ -27,6 +29,15 @@ const OrderForm = props => {
       return false;
     }
   };
+
+  // Checks if Items array are valid
+  useEffect(() => {
+    if (ctx.items.length === 0) {
+      setEmptyItemError(true);
+    } else {
+      setEmptyItemError(false);
+    }
+  }, [ctx.items]);
 
   // Input for First Name
   const {
@@ -168,10 +179,6 @@ const OrderForm = props => {
     onBlur: mobileNumberBlur,
   };
 
-  // Send POST HTTP
-
-  // Add a Back Functionality (will redirect you back to available meals)
-
   // Form Is Valid Checker
   if (
     firstNameValid &&
@@ -180,7 +187,8 @@ const OrderForm = props => {
     streetValid &&
     selectedCityValid &&
     selectedBarangayValid &&
-    mobileNumberValid
+    mobileNumberValid &&
+    !emptyItemError
   ) {
     foodOrderIsValid = true;
   }
@@ -241,6 +249,13 @@ const OrderForm = props => {
     backReset = false;
   }
 
+  // Focus on Firstname Input for every component mount
+  const firstNameInput = useRef();
+
+  useEffect(() => {
+    firstNameInput.current.focus();
+  });
+
   return (
     <Card className={classes['card-form']}>
       <h1 className={classes['form-header']}>Meal Order Form</h1>
@@ -249,6 +264,7 @@ const OrderForm = props => {
         className={classes['form-containerFlex']}
       >
         <OrderFormInput
+          inputRef={firstNameInput}
           dataType={fnameDataType}
           error={firstNameError}
           label="First Name"
@@ -312,6 +328,11 @@ const OrderForm = props => {
           label="Mobile Number"
           errMsg="must be 11-digits"
         ></OrderFormInput>
+        {emptyItemError ? (
+          <p className={classes.itemError}>
+            You must order a Meal before submitting the form
+          </p>
+        ) : null}
 
         <div className={classes.actions}>
           <button

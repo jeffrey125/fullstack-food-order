@@ -142,6 +142,16 @@ function App() {
     <Meals />
   );
 
+  // State persist for Order Form
+  useEffect(() => {
+    const formState = JSON.parse(sessionStorage.getItem('formState'));
+    setShowForm(formState);
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem('formState', JSON.stringify(showForm));
+  }, [showForm]);
+
   // TODO Make a Order tracker
   return (
     <CartProvider>
@@ -149,6 +159,7 @@ function App() {
         <Cart
           onHideModal={hideModalHandler}
           onShowForm={showOrderFormHandler}
+          showForm={showForm}
         />
       )}
       <Header onShowModal={showModalHandler} />
