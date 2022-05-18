@@ -254,7 +254,7 @@ const OrderForm = props => {
 
   useEffect(() => {
     firstNameInput.current.focus();
-  });
+  }, []);
 
   return (
     <Card className={classes['card-form']}>
