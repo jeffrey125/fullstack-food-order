@@ -32,6 +32,7 @@ const Cart = props => {
       ctx.items.map(item => {
         return (
           <CartItem
+            showForm={props.showForm}
             key={item.key}
             name={item.name}
             amount={item.amount}
@@ -77,14 +78,15 @@ const Cart = props => {
     : classes['cart-items'];
 
   // Cart Items conditional for summary
-  const cardContent = orderSummary ? (
-    <ul className={cartSummaryClasses}>
-      <h1>Meal Order Summary</h1>
-      {cartContent}
-    </ul>
-  ) : (
-    <ul className={cartItemsClasses}>{cartContent}</ul>
-  );
+  const cardContent =
+    orderSummary || props.showForm ? (
+      <ul className={cartSummaryClasses}>
+        <h1>Meal Order Summary</h1>
+        {cartContent}
+      </ul>
+    ) : (
+      <ul className={cartItemsClasses}>{cartContent}</ul>
+    );
 
   // Back or Close BTN Conditional
   const closeOrBack = orderSummary ? (
@@ -117,7 +119,7 @@ const Cart = props => {
 
       <div className={classes.actions}>
         {closeOrBack}
-        {hasItems && (
+        {hasItems && !props.showForm ? (
           <button
             className={classes.button}
             onClick={
@@ -126,7 +128,7 @@ const Cart = props => {
           >
             Next
           </button>
-        )}
+        ) : null}
       </div>
     </Modal>
   );

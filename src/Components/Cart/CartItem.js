@@ -4,16 +4,17 @@ const CartItem = props => {
   const price = `₱${props.price.toFixed(2)}`;
 
   // Edit food or Summary
-  const buttonOrSummary = props.buttonOrSummary ? (
-    <div>
-      <h3>₱ {`${(+props.price * +props.amount).toFixed(2)}`}</h3>
-    </div>
-  ) : (
-    <div className={classes.actions}>
-      <button onClick={props.onRemove}>-</button>
-      <button onClick={props.onAdd}>+</button>
-    </div>
-  );
+  const buttonOrSummary =
+    props.buttonOrSummary || props.showForm ? (
+      <div>
+        <h3>₱ {`${(+props.price * +props.amount).toFixed(2)}`}</h3>
+      </div>
+    ) : (
+      <div className={classes.actions}>
+        <button onClick={props.onRemove}>-</button>
+        <button onClick={props.onAdd}>+</button>
+      </div>
+    );
 
   return (
     <li className={classes['cart-item']}>

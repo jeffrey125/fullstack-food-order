@@ -67,6 +67,14 @@
   animation: fade-in 0.3s ease-in-out;
 }
 
+.slideUp {
+  animation: slideUp 0.3s ease-out;
+}
+
+.slideDown {
+  animation: slide-down 300ms ease-out forwards;
+}
+
 /* Fade In */
 @keyframes fade-in {
   from {
@@ -74,6 +82,28 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
