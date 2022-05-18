@@ -20,8 +20,6 @@ const Modal = props => {
     ? classes.modalSuccessQuery
     : `${props.cartFlex} ${props.modalQuery}`;
 
-  console.log(modalMediaQuery);
-
   return (
     <>
       {ReactDOM.createPortal(
