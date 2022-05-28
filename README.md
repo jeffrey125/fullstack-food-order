@@ -22,6 +22,10 @@ A simple Fullstack Food-Order-App that fetches meal data on a backend server (Fi
 
 - User Auth and autocompletion of address for saving of Your Cart items and Analytics
 
+- Geocoding for input address (If theres a free API of it)
+
+- User Dashboard to track status of order and order list
+
 - Find Order Status
 
 - Media Queries for all screen width ✅
@@ -30,4 +34,10 @@ A simple Fullstack Food-Order-App that fetches meal data on a backend server (Fi
 
 - Add Hero Section
 
-- Add an exit animation when modal unmounts
+- Add an exit animation when modal unmounts (Add Framer-Motion)
+
+- Fix Object ID that you post on FIREBASE dont implement on your UUID use FIREBASE UUID
+
+- Add Image to the meals
+
+- Migration to Next.js for SEO
